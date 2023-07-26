@@ -1,1 +1,29 @@
+name: Accept or Reject Data
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  process_data:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Update data
+      run: |
+        # データの更新処理を記述
+        # absent_requests.jsonファイルを更新する処理を行う
+        # 例: echo '{ "id": 1, "student_id": 123, "lesson_id": 234, "status": "accepted" }' > absent_requests.json
+
+    - name: Commit data changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add absent_requests.json
+        git commit -m "Update data"
+        git push
 
